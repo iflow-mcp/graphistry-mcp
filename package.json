@@ -1,0 +1,49 @@
+{
+  "name": "@silkspace/graphistry-mcp",
+  "version": "0.1.0",
+  "description": "Graphistry MCP server - GPU-accelerated graph visualization for Claude Code",
+  "main": "index.js",
+  "bin": {
+    "graphistry-mcp": "./index.js"
+  },
+  "scripts": {
+    "postinstall": "node postinstall.js"
+  },
+  "keywords": [
+    "mcp",
+    "graphistry",
+    "graph-visualization",
+    "claude",
+    "network-analysis",
+    "gpu-accelerated",
+    "ai",
+    "llm"
+  ],
+  "author": "Graphistry Community & Alexander Morisse <silkspace@users.noreply.github.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/graphistry/graphistry-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/graphistry/graphistry-mcp/issues"
+  },
+  "homepage": "https://github.com/graphistry/graphistry-mcp#readme",
+  "files": [
+    "index.js",
+    "postinstall.js",
+    "run_graphistry_mcp.py",
+    "pyproject.toml",
+    "setup.py",
+    "src/**/*.py",
+    ".env.example",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "os": [
+    "darwin",
+    "linux"
+  ]
+}
