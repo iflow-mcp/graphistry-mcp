@@ -1,6 +1,6 @@
 {
   "name": "@silkspace/graphistry-mcp",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Graphistry MCP server - GPU-accelerated graph visualization for MCP clients",
   "main": "index.js",
   "bin": {
