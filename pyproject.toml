@@ -20,6 +20,7 @@ classifiers = [
 dependencies = [
     "fastmcp>=2.2.6",
     "graphistry", # Required for hub.graphistry.com visualizations
+    "faiss-cpu",  # Enable Graphistry model save/load speedups
     "pandas",
     "networkx",
     "python-igraph", # For advanced layouts (group_in_a_box, modularity_weighted)

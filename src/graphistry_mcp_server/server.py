@@ -36,8 +36,8 @@ graph_cache: Dict[str, Any] = {}
 print(f"[DEBUG] GRAPHISTRY_USERNAME is set: {os.environ.get('GRAPHISTRY_USERNAME') is not None}", file=sys.stderr)
 print(f"[DEBUG] GRAPHISTRY_PASSWORD is set: {os.environ.get('GRAPHISTRY_PASSWORD') is not None}", file=sys.stderr)
 
-# Register Graphistry client with credentials and API version 3
-print("[DEBUG] Calling graphistry.register() with api=3, protocol=https, server=hub.graphistry.com", file=sys.stderr)
+print(f"[DEBUG] graphistry version: {getattr(graphistry, '__version__', 'unknown')}", file=sys.stderr)
+print("[DEBUG] Registering graphistry client (api=3)", file=sys.stderr)
 graphistry.register(
     api=3,
     protocol="https",
@@ -45,7 +45,14 @@ graphistry.register(
     username=os.environ.get("GRAPHISTRY_USERNAME"),
     password=os.environ.get("GRAPHISTRY_PASSWORD")
 )
-print("[DEBUG] graphistry.register() call complete", file=sys.stderr)
+print("[DEBUG] graphistry.register() done", file=sys.stderr)
+
+@mcp.tool()
+async def ping(ctx: Optional[Context] = None) -> Dict[str, Any]:
+    """Health check for Graphistry MCP server."""
+    if ctx:
+        await ctx.info("pong")
+    return {"status": "ok", "graphistry_version": getattr(graphistry, "__version__", "unknown")}
 
 @mcp.tool()
 async def visualize_graph(graph_data: Dict[str, Any], ctx: Optional[Context] = None) -> Dict[str, Any]:

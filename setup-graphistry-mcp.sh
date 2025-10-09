@@ -44,7 +44,13 @@ uvx pip install -e ".[dev]"
 
 # Install key packages explicitly to ensure they're available
 echo "Installing key packages..."
-uvx pip install "fastmcp>=2.2.6" "graphistry" "pandas" "networkx" "uvicorn" "python-dotenv" "python-louvain" "pydantic" "psutil"
+uvx pip install "fastmcp>=2.2.6" "graphistry" "faiss-cpu" "pandas" "networkx" "uvicorn" "python-dotenv" "python-louvain" "pydantic" "psutil"
+
+echo "Graphistry version:"
+uvx python - << 'PY'
+import graphistry
+print(getattr(graphistry, '__version__', 'unknown'))
+PY
 
 # Make the start script executable
 chmod +x start-graphistry-mcp.sh
