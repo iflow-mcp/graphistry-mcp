@@ -19,16 +19,19 @@ classifiers = [
 ]
 dependencies = [
     "fastmcp>=2.2.6",
-    "graphistry",  # Required for hub.graphistry.com visualizations
+    "graphistry", # Required for hub.graphistry.com visualizations
     "pandas",
     "networkx",
-    "python-igraph",  # For advanced layouts (group_in_a_box, modularity_weighted)
+    "python-igraph", # For advanced layouts (group_in_a_box, modularity_weighted)
     "asyncio",
     "uvicorn",
-    "python-louvain",  # For community detection
-    "python-dotenv",    # For loading .env files with credentials
+    "python-louvain", # For community detection
+    "python-dotenv", # For loading .env files with credentials
     "pytest",
     "pytest-asyncio",
+    "duckdb>=1.4.1",
+    "umap-learn>=0.5.9.post2",
+    "scikit-learn>=1.7.2",
 ]
 
 [project.optional-dependencies]
