@@ -3,7 +3,7 @@
  * Graphistry MCP Server
  *
  * Wrapper script that spawns the Python MCP server process.
- * Handles stdio communication between Claude Code and the Python server.
+ * Handles stdio communication between MCP clients and the Python server.
  */
 
 const { spawn } = require('child_process');
@@ -59,7 +59,7 @@ const pythonCmd = findPython();
 
 // Spawn the Python MCP server
 const pythonProcess = spawn(pythonCmd, [serverPath], {
-  stdio: 'inherit',
+  stdio: ['inherit', 'inherit', 'ignore'],  // stdin, stdout, stderr (ignore stderr for MCP)
   env: {
     ...process.env,
     PYTHONUNBUFFERED: '1', // Disable Python output buffering

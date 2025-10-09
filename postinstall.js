@@ -150,7 +150,7 @@ function printSuccessMessage(usedUv) {
   log('   export GRAPHISTRY_USERNAME="your_username"', colors.cyan);
   log('   export GRAPHISTRY_PASSWORD="your_password"\n', colors.cyan);
 
-  log('3. Configure in Claude Code MCP settings:', colors.reset);
+  log('3. Configure in your MCP client settings:', colors.reset);
   log('   {', colors.reset);
   log('     "graphistry": {', colors.reset);
   log('       "command": "npx",', colors.reset);
