@@ -64,7 +64,7 @@ graphistry-mcp
 
 **MCP Client Configuration:**
 
-Add to your MCP client settings (`.mcp.json`, Claude Desktop config, etc.):
+Add to your MCP client settings (`.mcp.json`, MCP client config, etc.):
 
 ```json
 {
@@ -125,11 +125,11 @@ python run_graphistry_mcp.py
 - The server loads credentials from environment variables or `.env` using [python-dotenv](https://pypi.org/project/python-dotenv/), so you can safely use a `.env` file for local development.
 - The `start-graphistry-mcp.sh` script sources `.env` and is the most robust and secure way to launch the server.
 
-### Adding to MCP Clients (Claude Code, Cursor, etc.)
+### Adding to MCP Clients
 
 **Using npm (Recommended):**
 
-Add the MCP server to your client config (`.mcp.json`, `claude_desktop_config.json`, etc.):
+Add the MCP server to your MCP client config:
 
 ```json
 {
