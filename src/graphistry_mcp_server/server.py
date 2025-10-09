@@ -10,6 +10,7 @@ GPU-accelerated visualization capabilities.
 """
 
 import os
+import sys
 import logging
 from typing import Any, Dict, List, Optional
 import graphistry
@@ -32,11 +33,11 @@ mcp = FastMCP("graphistry-mcp-server")
 graph_cache: Dict[str, Any] = {}
 
 # Debug: Print environment variables for Graphistry
-print(f"[DEBUG] GRAPHISTRY_USERNAME is set: {os.environ.get('GRAPHISTRY_USERNAME') is not None}")
-print(f"[DEBUG] GRAPHISTRY_PASSWORD is set: {os.environ.get('GRAPHISTRY_PASSWORD') is not None}")
+print(f"[DEBUG] GRAPHISTRY_USERNAME is set: {os.environ.get('GRAPHISTRY_USERNAME') is not None}", file=sys.stderr)
+print(f"[DEBUG] GRAPHISTRY_PASSWORD is set: {os.environ.get('GRAPHISTRY_PASSWORD') is not None}", file=sys.stderr)
 
 # Register Graphistry client with credentials and API version 3
-print("[DEBUG] Calling graphistry.register() with api=3, protocol=https, server=hub.graphistry.com")
+print("[DEBUG] Calling graphistry.register() with api=3, protocol=https, server=hub.graphistry.com", file=sys.stderr)
 graphistry.register(
     api=3,
     protocol="https",
@@ -44,7 +45,7 @@ graphistry.register(
     username=os.environ.get("GRAPHISTRY_USERNAME"),
     password=os.environ.get("GRAPHISTRY_PASSWORD")
 )
-print("[DEBUG] graphistry.register() call complete")
+print("[DEBUG] graphistry.register() call complete", file=sys.stderr)
 
 @mcp.tool()
 async def visualize_graph(graph_data: Dict[str, Any], ctx: Optional[Context] = None) -> Dict[str, Any]:
