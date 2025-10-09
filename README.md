@@ -51,7 +51,40 @@ Edit `.mcp.json` to:
 
 ## Installation
 
-### Recommended Installation (Python venv + pip)
+### Quick Start with npm (Recommended)
+
+```bash
+# Install via npx (no installation required)
+npx -y @silkspace/graphistry-mcp
+
+# Or install globally
+npm install -g @silkspace/graphistry-mcp
+graphistry-mcp
+```
+
+**MCP Client Configuration:**
+
+Add to your MCP client settings (`.mcp.json`, Claude Desktop config, etc.):
+
+```json
+{
+  "graphistry": {
+    "command": "npx",
+    "args": ["-y", "@silkspace/graphistry-mcp"],
+    "env": {
+      "GRAPHISTRY_USERNAME": "your_username",
+      "GRAPHISTRY_PASSWORD": "your_password"
+    }
+  }
+}
+```
+
+The npm package automatically:
+- Creates a Python virtual environment
+- Installs all Python dependencies (using `uv` if available, otherwise `pip`)
+- Sets up the MCP server
+
+### Alternative: Manual Installation (Python venv + pip)
 
 ```bash
 # Clone the repository
@@ -92,22 +125,41 @@ python run_graphistry_mcp.py
 - The server loads credentials from environment variables or `.env` using [python-dotenv](https://pypi.org/project/python-dotenv/), so you can safely use a `.env` file for local development.
 - The `start-graphistry-mcp.sh` script sources `.env` and is the most robust and secure way to launch the server.
 
-### Adding to Cursor (or other LLM tools)
+### Adding to MCP Clients (Claude Code, Cursor, etc.)
 
-- Add the MCP server to your `.cursor/mcp.json` or equivalent config:
-  ```json
-  {
-    "graphistry": {
-      "command": "/path/to/your/.venv/bin/python",
-      "args": ["/path/to/your/run_graphistry_mcp.py"],
-      "env": {
-        "GRAPHISTRY_USERNAME": "your_username",
-        "GRAPHISTRY_PASSWORD": "your_password"
-      },
-      "type": "stdio"
+**Using npm (Recommended):**
+
+Add the MCP server to your client config (`.mcp.json`, `claude_desktop_config.json`, etc.):
+
+```json
+{
+  "graphistry": {
+    "command": "npx",
+    "args": ["-y", "@silkspace/graphistry-mcp"],
+    "env": {
+      "GRAPHISTRY_USERNAME": "your_username",
+      "GRAPHISTRY_PASSWORD": "your_password"
     }
   }
-  ```
+}
+```
+
+**Using manual installation:**
+
+```json
+{
+  "graphistry": {
+    "command": "/path/to/your/.venv/bin/python",
+    "args": ["/path/to/your/run_graphistry_mcp.py"],
+    "env": {
+      "GRAPHISTRY_USERNAME": "your_username",
+      "GRAPHISTRY_PASSWORD": "your_password"
+    }
+  }
+}
+```
+
+**Notes:**
 - Make sure the virtual environment is used (either by using the full path to the venv's python, or by activating it before launching).
 - If you see errors about API version or missing credentials, double-check your environment variables and registration.
 
