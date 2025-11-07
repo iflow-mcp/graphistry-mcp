@@ -648,5 +648,9 @@ async def set_graph_settings(graph_id: str, url_params: dict) -> Dict[str, Any]:
     graph_cache[graph_id]["graph"] = g
     return {"graph_id": graph_id, "url": g.plot(render=False)}
 
-if __name__ == "__main__":
+def main():
+    """Main entry point for the MCP server."""
     mcp.run()
+
+if __name__ == "__main__":
+    main()
